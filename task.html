@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhiệm Vụ Vượt Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .task {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .task h3 {
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:disabled {
+            background-color: #aaa;
+        }
+        #reward {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        /* Style bảng "Đang tạo" */
+        #loading {
+            display: none;
+            font-size: 18px;
+            color: #f39c12;
+            padding: 10px;
+            background-color: #fff3cd;
+            border: 1px solid #f0ad4e;
+            border-radius: 5px;
+            margin-top: 20px;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        /* Modal container */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        #modalContent {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #modalContent a {
+            color: #007bff;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        #modalContent a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bảng thông báo "Đang tạo" (hiển thị ở đầu trang) -->
+<div id="loading">Đang tạo link, vui lòng chờ...</div>
+
+<h1>Hoàn Thành Nhiệm Vụ Để Nhận Phần Thưởng!</h1>
+
+<!-- Nhiệm vụ vượt link -->
+<div class="task" id="task1">
+    <h3>Nhiệm vụ 1: Yeumoney</h3>
+    <button class="btn" onclick="completeTask1()">Xác nhận</button>
+</div>
+
+<div class="task" id="task2">
+    <h3>Nhiệm vụ 2: Link4m</h3>
+    <button class="btn" onclick="completeTask2()">Xác nhận</button>
+</div>
+
+<div class="task" id="task3">
+    <h3>Nhiệm vụ 3: Link2m</h3>
+    <button class="btn" onclick="completeTask3()">Xác nhận</button>
+</div>
+
+<div class="task" id="task4">
+    <h3>Nhiệm vụ 4: Site2s Traffic</h3>
+    <button class="btn" onclick="completeTask4()">Xác nhận</button>
+</div>
+
+<div class="task" id="task5">
+    <h3>Nhiệm vụ 5: Site2s Direct</h3>
+    <button class="btn" onclick="completeTask5()">Xác nhận</button>
+</div>
+
+<div class="task" id="task6">
+    <h3>Nhiệm vụ 6: Linkpays</h3>
+    <button class="btn" onclick="completeTask6()">Xác nhận</button>
+</div>
+
+<div id="reward" style="display:none;">
+    <h2>Chúc mừng! Bạn đã hoàn thành tất cả nhiệm vụ và nhận được phần thưởng.</h2>
+</div>
+
+<!-- Modal hiển thị link rút gọn -->
+<div id="modal">
+    <div id="modalContent">
+        <p>Link rút gọn đã hoàn thành:</p>
+        <a id="shortenedLink" href="" target="_blank">Nhấn vào đây để truy cập</a>
+    </div>
+</div>
+
+<script>
+    let completedTasks = 0;
+
+    function shortenLink(service, url) {
+        // Hiển thị bảng "Đang tạo" khi bắt đầu nhiệm vụ
+        document.getElementById('loading').style.display = 'block';
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() > 0.2) {
+                    resolve(`https://${service}.com/r/${Math.random().toString(36).substring(2, 15)}`);
+                } else {
+                    reject('Lỗi vượt link!');
+                }
+            }, 2000);  // Mô phỏng thời gian trễ của API
+        });
+    }
+
+    function completeTask1() {
+        const originalLink = 'https://example.com/yeumoney';
+        shortenLink('yeumoney', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function completeTask2() {
+        const originalLink = 'https://example.com/link4m';
+        shortenLink('link4m', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function completeTask3() {
+        const originalLink = 'https://example.com/link2m';
+        shortenLink('link2m', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function completeTask4() {
+        const originalLink = 'https://example.com/site2s-traffic';
+        shortenLink('site2s-traffic', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function completeTask5() {
+        const originalLink = 'https://example.com/site2s-direct';
+        shortenLink('site2s-direct', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function completeTask6() {
+        const originalLink = 'https://example.com/linkpays';
+        shortenLink('linkpays', originalLink)
+            .then(shortenedUrl => {
+                showLinkModal(shortenedUrl);
+                markTaskCompleted();
+            })
+            .catch(error => alert(error))
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    }
+
+    function showLinkModal(shortenedUrl) {
+        // Cập nhật link trong modal
+        document.getElementById('shortenedLink').href = shortenedUrl;
+        document.getElementById('shortenedLink').textContent = shortenedUrl;
+
+        // Hiển thị modal
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        // Ẩn modal khi người dùng click ngoài hộp thoại
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    function markTaskCompleted() {
+        completedTasks++;
+        if (completedTasks === 6) {
+            document.getElementById('reward').style.display = 'block';
+        }
+    }
+
+    // Thêm sự kiện đóng modal khi click ngoài vùng modal
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('modal')) {
+            closeModal();
+        }
+    };
+</script>
+
+</body>
+</html>
