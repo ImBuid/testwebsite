@@ -1,0 +1,77 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Căn chỉnh biểu tượng menu */
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-icon {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Thanh điều hướng (ẩn mặc định) */
+#navbar {
+    display: none;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 10px;
+    text-align: center;
+}
+
+#navbar ul li {
+    margin: 10px 0;
+}
+
+#navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Phần nội dung */
+section {
+    padding: 20px;
+    margin: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Nút rút tiền */
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
